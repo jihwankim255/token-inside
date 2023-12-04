@@ -1,49 +1,10 @@
 import React, {useCallback, useState} from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import {useDropzone} from 'react-dropzone'; // npm i react-dropzone
 import {ThirdwebStorage} from '@thirdweb-dev/storage'; //npm install @thirdweb-dev/storage
 import {useNavigate} from 'react-router-dom';
-import Modal from '../components/Modal';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  justify-content: center;
-  height: calc(100vh - 100px); /* 브라우저 높이 - 400px */
-`;
-
-const ImagePreview = styled.img`
-  width: 100%;
-  max-width: 400px;
-  margin-top: 16px;
-  border: 1px solid #ccc;
-`;
-
-const Label = styled.label`
-  font-size: 16px;
-  font-weight: bold;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 24px;
-`;
-
-const Textarea = styled.textarea`
-  width: 100%;
-  padding: 10px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-`;
+import Modal from '../../components/Modal';
+import Styled from './Mint.styled';
 
 const Dropzone = ({onDrop, image}) => {
   const onDropCallback = useCallback(
@@ -59,14 +20,14 @@ const Dropzone = ({onDrop, image}) => {
   });
 
   return (
-    <Wrapper {...getRootProps()} isDragActive={isDragActive}>
+    <Styled.Wrapper {...getRootProps()} isDragActive={isDragActive}>
       <input {...getInputProps()} />
       {image ? (
-        <ImagePreview src={URL.createObjectURL(image)} alt="Preview" />
+        <Styled.ImagePreview src={URL.createObjectURL(image)} alt="Preview" />
       ) : (
         <p>Drop your image here</p>
       )}
-    </Wrapper>
+    </Styled.Wrapper>
   );
 };
 
@@ -89,11 +50,16 @@ const Form = ({onSubmit}) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Label htmlFor="name">Name</Label>
-      <Input type="text" id="name" value={name} onChange={handleNameChange} required />
+      <Styled.Label htmlFor="name">Name</Styled.Label>
+      <Styled.Input type="text" id="name" value={name} onChange={handleNameChange} required />
 
-      <Label htmlFor="description">Description</Label>
-      <Textarea id="description" value={description} onChange={handleDescriptionChange} required />
+      <Styled.Label htmlFor="description">Description</Styled.Label>
+      <Styled.Textarea
+        id="description"
+        value={description}
+        onChange={handleDescriptionChange}
+        required
+      />
 
       <button type="submit">Mint NFT</button>
     </form>
@@ -149,11 +115,11 @@ const MintPage = () => {
   const [modalData, setModalData] = useState('');
 
   return (
-    <Wrapper>
+    <Styled.Wrapper>
       <Dropzone onDrop={handleDrop} image={imageFile} />
       <Form onSubmit={onSubmit} />
       {modalVisible && <Modal modalData={modalData} setModalVisible={setModalVisible} />}
-    </Wrapper>
+    </Styled.Wrapper>
   );
 };
 

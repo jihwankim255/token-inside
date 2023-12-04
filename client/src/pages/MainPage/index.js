@@ -1,58 +1,12 @@
-import styled from 'styled-components';
 import {motion} from 'framer-motion';
 import {useState, useEffect} from 'react';
-import {Col} from '../styles';
+import {Col} from '../../styles';
 import {Link, useNavigate} from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {data} from '../data';
+import {data} from '../../data';
 import axios from 'axios';
-const WriteBox = styled.div`
-  margin-top: 50px;
-  padding: 30px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-weight: 600;
-  font-size: 40px;
-  :span(:first-child) {
-    font-size: 25px;
-  }
-`;
+import Styled from './Main.styled';
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ListTitle = styled.div`
-  font-size: 60px;
-  margin-left: 20px;
-  margin-right: 20px;
-  font-weight: 600;
-`;
-
-const WriteBtn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 15px;
-  font-size: 20px;
-  color: white;
-  border-radius: 9px;
-  background: ${props => props.theme.colors.primary2};
-  :hover {
-    cursor: pointer;
-  }
-`;
-export const Post = styled.div`
-  border: 1px solid skyblue;
-  margin: 15px;
-  padding: 8px;
-  :hover {
-    cursor: pointer;
-  }
-`;
 function MainPage() {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
@@ -119,25 +73,25 @@ function MainPage() {
       endMessage={<p>끝났습니다</p>}
       height={940}
     >
-      <Container className="aaabbbccc">
-        <WriteBox>
+      <Styled.Container className="aaabbbccc">
+        <Styled.WriteBox>
           {/* <Link to="/write"> */}
-          <WriteBtn onClick={() => test()}>Write posts, get incentive!</WriteBtn>
+          <Styled.WriteBtn onClick={() => test()}>Write posts, get incentive!</Styled.WriteBtn>
           {/* </Link> */}
-        </WriteBox>
+        </Styled.WriteBox>
 
         {post &&
           post.map(item => {
             return (
-              <Post key={item.id} onClick={() => handleClick(item.id)}>
+              <Styled.Post key={item.id} onClick={() => handleClick(item.id)}>
                 #{item.id} {item.created_at.slice(0, 16)}
                 <div>작성자: {item.user_id}</div>
                 <div>제목: {item.title}</div>
                 <div>내용: {item.content}</div>
-              </Post>
+              </Styled.Post>
             );
           })}
-      </Container>
+      </Styled.Container>
     </InfiniteScroll>
   );
 }

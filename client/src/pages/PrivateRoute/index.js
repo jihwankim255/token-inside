@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, Navigate} from 'react-router-dom';
-import MyPage from './MyPage';
+import MyPage from '../MyPage';
 import {useSelector} from 'react-redux';
 
 function PrivateRoute({element, isLoggedIn}) {

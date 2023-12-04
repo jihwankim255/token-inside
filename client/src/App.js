@@ -24,7 +24,6 @@ import Footer from './components/Footer';
 import {useState} from 'react';
 
 import './App.css';
-import CssTest from './pages/CssTest';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn'));

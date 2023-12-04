@@ -1,55 +1,7 @@
-import styled from 'styled-components';
 import React, {useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-
-const FormWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 1rem;
-`;
-
-const InputLabel = styled.label`
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-`;
-
-const Input = styled.input`
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid gray;
-  border-radius: 5px;
-  width: ${props => props.width || '100%'};
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-`;
-
-const SubmitButton = styled.button`
-  background-color: blue;
-  color: white;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-`;
+import Styled from './Join.styled';
 
 function JoinPage() {
   const navigate = useNavigate();
@@ -120,11 +72,11 @@ function JoinPage() {
   };
 
   return (
-    <FormWrapper>
-      <FormContainer onSubmit={handleSubmit}>
-        <InputContainer>
-          <InputLabel>ID</InputLabel>
-          <Input
+    <Styled.FormWrapper>
+      <Styled.FormContainer onSubmit={handleSubmit}>
+        <Styled.InputContainer>
+          <Styled.InputLabel>ID</Styled.InputLabel>
+          <Styled.Input
             type="text"
             name="nickname"
             placeholder="아이디을 입력하세요."
@@ -132,20 +84,20 @@ function JoinPage() {
             onChange={handleInputChange}
             required
           />
-        </InputContainer>
-        <InputContainer>
-          <InputLabel>Password</InputLabel>
-          <Input
+        </Styled.InputContainer>
+        <Styled.InputContainer>
+          <Styled.InputLabel>Password</Styled.InputLabel>
+          <Styled.Input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
             required
           />
-        </InputContainer>
-        <InputContainer>
-          <InputLabel>Confirm Password</InputLabel>
-          <Input
+        </Styled.InputContainer>
+        <Styled.InputContainer>
+          <Styled.InputLabel>Confirm Password</Styled.InputLabel>
+          <Styled.Input
             type="password"
             name="confirmPassword"
             placeholder="비밀번호를 똑같이 입력하세요."
@@ -155,13 +107,13 @@ function JoinPage() {
             width="600px"
             required
           />
-          {passwordError && <ErrorMessage>{passwordError}</ErrorMessage>}
-        </InputContainer>
-        <SubmitButton type="submit" disabled={passwordError || usernameError}>
+          {passwordError && <Styled.ErrorMessage>{passwordError}</Styled.ErrorMessage>}
+        </Styled.InputContainer>
+        <Styled.SubmitButton type="submit" disabled={passwordError || usernameError}>
           Sign Up
-        </SubmitButton>
-      </FormContainer>
-    </FormWrapper>
+        </Styled.SubmitButton>
+      </Styled.FormContainer>
+    </Styled.FormWrapper>
   );
 }
 

@@ -6,12 +6,7 @@ const Container = styled.div`
 `;
 const MyBox = styled.div``;
 
-function MarketPage() {
-  return (
-    <Container>
-      <MyBox></MyBox>
-    </Container>
-  );
-}
-
-export default MarketPage;
+export default {
+  Container,
+  MyBox,
+};

@@ -1,39 +1,6 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: white;
-`;
-
-const Textarea = styled.textarea`
-  padding: 10px;
-  margin-bottom: 20px;
-  height: 200px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  background-color: blue;
-  color: white;
-  border: none;
-  cursor: pointer;
-`;
+import Styled from './Write.styled';
 
 function WritePage() {
   const [title, setTitle] = useState('');
@@ -58,18 +25,22 @@ function WritePage() {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <Input
+    <Styled.Container>
+      <Styled.Form onSubmit={handleSubmit}>
+        <Styled.Input
           type="text"
           placeholder="제목"
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
-        <Textarea placeholder="내용" value={content} onChange={e => setContent(e.target.value)} />
-        <Button type="submit">작성</Button>
-      </Form>
-    </Container>
+        <Styled.Textarea
+          placeholder="내용"
+          value={content}
+          onChange={e => setContent(e.target.value)}
+        />
+        <Styled.Button type="submit">작성</Styled.Button>
+      </Styled.Form>
+    </Styled.Container>
   );
 }
 
