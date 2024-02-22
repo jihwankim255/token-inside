@@ -59,7 +59,7 @@ function JoinPage() {
   const handleSubmit = event => {
     event.preventDefault();
     axios
-      .post('http://localhost:5500/user/join', formData)
+      .post(process.env.REACT_APP_BASE_URL + '/user/join', formData)
       .then(response => {
         console.log(response.message, response.data); // Do something with the response
         alert('회원가입에 성공하였습니다!');

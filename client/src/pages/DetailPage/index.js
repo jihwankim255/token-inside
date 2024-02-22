@@ -9,7 +9,7 @@ function DetailPage() {
   const {id} = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5500/post/detail/${id}`).then(response => {
+    axios.get(process.env.REACT_APP_BASE_URL + `/post/detail/${id}`).then(response => {
       setData(response.data);
     });
   }, []);

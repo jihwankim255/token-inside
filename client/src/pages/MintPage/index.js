@@ -93,7 +93,7 @@ const MintPage = () => {
     try {
       const response = await axios
         .post(
-          'http://localhost:5500/nft/minting',
+          process.env.REACT_APP_BASE_URL + '/nft/minting',
           {name, description, tokenurl},
           {
             withCredentials: true,

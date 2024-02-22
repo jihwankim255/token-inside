@@ -38,7 +38,7 @@ function LoginPage({isLoggedIn, setIsLoggedIn, user, setUser, address, setAddres
   const handleSubmit = event => {
     event.preventDefault();
     axios
-      .post('http://localhost:5500/user/login', formData, {withCredentials: true})
+      .post(process.env.REACT_APP_BASE_URL + '/user/login', formData, {withCredentials: true})
       .then(response => {
         console.log(response.data); // Do something with the response
         console.log(response.data.data.nickname); // Do something with the response

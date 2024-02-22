@@ -35,7 +35,7 @@ function Header({
   };
   async function postFaucet() {
     axios
-      .post('http://localhost:5500/user/faucet', null, {withCredentials: true})
+      .post(process.env.REACT_APP_BASE_URL + '/user/faucet', null, {withCredentials: true})
       .then(response => {
         console.log(response.data); // Do something with the response
         alert(`ETH 받기 성공 ! 보유 ETH: ${response.data.data}`);
@@ -54,7 +54,7 @@ function Header({
 
     // DB의 세션에서 user 정보 삭제
     axios
-      .get('http://localhost:5500/logout', {withCredentials: true})
+      .get(process.env.REACT_APP_BASE_URL + '/logout', {withCredentials: true})
       .then(res => {
         console.log(res);
       })

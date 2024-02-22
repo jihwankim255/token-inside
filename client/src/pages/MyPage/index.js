@@ -18,7 +18,7 @@ function MyPage() {
   };
   useEffect(() => {
     axios
-      .get('http://localhost:5500/user/mypage', {withCredentials: true})
+      .get(process.env.REACT_APP_BASE_URL + '/user/mypage', {withCredentials: true})
       .then(response => {
         console.log('data: ', response.data);
         console.log('myToken amount: ', response.data.data.user.token_amount);
@@ -40,7 +40,7 @@ function MyPage() {
 
     axios
       .post(
-        'http://localhost:5500/user/transfer',
+        process.env.REACT_APP_BASE_URL + '/user/transfer',
         {account, amount},
         {
           withCredentials: true,

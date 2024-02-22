@@ -11,7 +11,7 @@ function WritePage() {
     try {
       console.log('title, content', title, content);
       await axios.post(
-        'http://localhost:5500/post/register',
+        process.env.REACT_APP_BASE_URL + '/post/register',
         {title, content},
         {withCredentials: true},
       );

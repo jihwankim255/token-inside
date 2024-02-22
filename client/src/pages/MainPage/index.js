@@ -24,7 +24,7 @@ function MainPage() {
       SetPostLoading(true);
       setTimeout(() => {
         axios
-          .get('http://localhost:5500', {params: {page: page}})
+          .get(process.env.REACT_APP_BASE_URL, {params: {page: page}})
           .then(response => {
             SetPost([...post, ...response.data.data]);
 
@@ -36,7 +36,7 @@ function MainPage() {
             console.log('main_get: ', response.data.data); // Do something with the response
           })
           .catch(error => {
-            console.error(error);
+            console.error('메인 에러: ', error);
             setHasMore(false);
           });
       }, 2000);
@@ -49,7 +49,7 @@ function MainPage() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5500', {params: {page: page}})
+      .get(process.env.REACT_APP_BASE_URL, {params: {page: page}})
       .then(response => {
         SetPost([...post, ...response.data.data]);
         setPage(page + 1);
